@@ -108,9 +108,9 @@ Triggers passive multi-cloud discovery templates, including historical DNS looku
 
 Since these flags are registered globally, you can append them to any of the commands above (like **recon**, **gcp**, **azure**, etc.) to bypass network protections:
 
-    DNS Pinning / Cloudflare Bypass (`--ip`): Forces the HTTP client to connect directly to a specific backend IP address, bypassing public DNS resolution and Cloudflare caching/WAF layers.
+* DNS Pinning / Cloudflare Bypass (`--ip`): Forces the HTTP client to connect directly to a specific backend IP address, bypassing public DNS resolution and Cloudflare caching/WAF layers.
 
-    Anti-WAF Header Spoofing (`--anti-waf`): Rotates standard browser User-Agents and injects source spoofing headers (`X-Forwarded-For`, `X-Real-IP`) to fly under the radar of simple anti-bot mechanisms.
+* Anti-WAF Header Spoofing (`--anti-waf`): Rotates standard browser User-Agents and injects source spoofing headers (`X-Forwarded-For`, `X-Real-IP`) to fly under the radar of simple anti-bot mechanisms.
 
 ```bash
 # Example: Running reconnaissance by hitting the origin server IP directly with anti-WAF headers
