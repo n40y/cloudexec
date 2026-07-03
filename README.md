@@ -25,6 +25,24 @@
 
 ---
 
+## 🛠️ Customizing Templates (Playbooks)
+
+`cloudexec` uses a modular YAML template engine. You can easily extend the scanner's capabilities by adding your own templates into the provider subdirectories (e.g., `templates/gcp/`, `templates/aws/`).
+
+### Template Structure
+
+Every template must follow this anatomy:
+
+```yaml
+id: custom-gcp-check
+engine: gcp                 # Target engine: aws, azure, gcp, cloudflare, recon
+action: gcp:ApiKeyCheck     # The internal method to execute
+info:
+  name: "Custom API Key Validation Workflow"
+  description: "Triggers a validation request and maps downstream permissions."
+  severity: "high"
+```
+
 ## Installation
 
 Ensure you have [Go](https://go.dev/doc/install) installed (version 1.20+ recommended).
@@ -38,31 +56,52 @@ cd cloudexec
 go build
 ```
 
-## Usage Examples
+## 🚀 Usage Guide
 
-
-### 1. Scan for Secrets with Auto-Pivot & Post-Auth Verification
-
-Scan a local repository, intercept Google API keys or AWS credentials, and validate them immediately against official endpoints:
-
+### 1. Global Secrets Scanner (with Auto-Pivot)
+Scan a directory for leaked credentials, automatically intercept them, and validate them against cloud provider APIs in real-time.
 ```bash
-./cloudexec secrets --path /path/to/sourcecode -p
+# Basic scan
+./cloudexec secrets --path .
+
+# Scan with auto-pivot validation and JSON export
+./cloudexec secrets --path /path/to/project -p -o report.json
 ```
 
-### 2. Google Cloud Platform Audit
+### 2. AWS Audit Engine
 
-Run Google Workspace tenant mapping and check a specific API key:
+Executes AWS-specific templates (identity verification via **STS**, S3 bucket enumeration). It automatically utilizes credentials configured in your **config.yaml** or standard local AWS environment variables.
 
 ```bash
+./cloudexec aws
+```
+
+### 3. Azure OSINT & Enumeration Engine
+
+Performs passive and active reconnaissance on a Microsoft 365 / Azure tenant using a target domain. Extracts Tenant ID, authentication mechanics, identity provider details, and lists potential break-glass accounts.
+
+```bash
+./cloudexec azure -d targetcompany.com
+```
+
+### 4. GCP Audit Engine
+
+Validates Google Cloud API keys and checks if a domain is mapped to a public Google Workspace infrastructure.
+
+```bash
+# Check both Workspace infrastructure and a specific API Key
 ./cloudexec gcp -d targetcompany.com --apikey AIzaSy...
+
+# Check an isolated API key only
+./cloudexec gcp --apikey AIzaSy...
 ```
 
-### 3. Save Audit Reports
+### 5. General Recon Engine
 
-Export results into a structured JSON report for post-assessment processing:
+Triggers passive multi-cloud discovery templates, including historical DNS lookups, certificate transparency logs via **crt.sh**, and cross-provider storage bucket detection.
 
 ```bash
-./cloudexec secrets --path . --output report.json
+./cloudexec recon -d targetcompany.com
 ```
 
 
