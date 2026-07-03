@@ -104,12 +104,26 @@ Triggers passive multi-cloud discovery templates, including historical DNS looku
 ./cloudexec recon -d targetcompany.com
 ```
 
+### 🥷 Bypass & Evasion Options
+
+Since these flags are registered globally, you can append them to any of the commands above (like **recon**, **gcp**, **azure**, etc.) to bypass network protections:
+
+    DNS Pinning / Cloudflare Bypass (`--ip`): Forces the HTTP client to connect directly to a specific backend IP address, bypassing public DNS resolution and Cloudflare caching/WAF layers.
+
+    Anti-WAF Header Spoofing (`--anti-waf`): Rotates standard browser User-Agents and injects source spoofing headers (`X-Forwarded-For`, `X-Real-IP`) to fly under the radar of simple anti-bot mechanisms.
+
+```bash
+# Example: Running reconnaissance by hitting the origin server IP directly with anti-WAF headers
+./cloudexec recon -d targetcompany.com --ip 185.190.140.23 --anti-waf
+```
+
 
 ## 📁 Project Structure
 
 | Path | Description |
 | :--- | :--- |
 | **`cmd/`** | Contains Cobra CLI command definitions (`aws`, `azure`, `gcp`, `recon`, `secrets`). |
+| **`pkg/bypass/`** | Evasion and bypass network protections. |
 | **`pkg/engines/`** | Core execution logic for cloud provider validation and post-auth enumeration. |
 | **`pkg/templates/`** | YAML template parsing and signature matching engines. |
 | **`pkg/utils/`** | Thread-safe logging utilities and console formatting. |
