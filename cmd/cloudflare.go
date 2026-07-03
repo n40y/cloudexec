@@ -33,7 +33,7 @@ var cloudflareCmd = &cobra.Command{
 		for _, tmpl := range tmplList {
 			if tmpl.Engine == "http" {
 				// Utilisation du moteur HTTP avec le flag Verbose global
-				err := engines.ExecuteHTTPEngine(tmpl, Target, Verbose)
+				err := engines.ExecuteHTTPEngine(tmpl, Target)
 				if err != nil {
 					fmt.Printf("[-] Erreur d'exécution [%s] : %v\n", tmpl.ID, err)
 				}
