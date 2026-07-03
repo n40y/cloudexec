@@ -1,0 +1,16 @@
+id: cloudflare-dns-history
+info:
+  name: "Bypass Cloudflare via Historique DNS"
+  severity: "HIGH"
+  description: "Interroge SecurityTrails pour trouver les anciennes adresses IP de la cible."
+
+engine: http
+
+requests:
+  - method: GET
+    url: "https://api.securitytrails.com/v1/history/{{target}}/dns/a"
+    headers:
+      APIKEY: "TEST_KEY"
+    matchers:
+      - type: status
+        status: 200

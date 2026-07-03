@@ -1,0 +1,14 @@
+id: crtsh-subdomain-recon
+info:
+  name: "Reconnaissance de sous-domaines via crt.sh"
+  severity: "INFO"
+  description: "Examine les logs de certificats TLS pour découvrir des sous-domaines."
+
+engine: http
+
+requests:
+  - method: GET
+    url: "https://crt.sh/?q={{target}}"
+    matchers:
+      - type: status
+        status: 200

@@ -1,0 +1,12 @@
+# Binaires compilés
+cloudexec
+cloudexec.exe
+
+# Fichiers de configuration et secrets locaux
+config.yaml
+*.json
+
+# Dépendances et caches
+.idea/
+.vscode/
+vendor/

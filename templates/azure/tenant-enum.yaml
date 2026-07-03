@@ -1,0 +1,9 @@
+id: azure-tenant-recon
+info:
+  name: "Détection d'infrastructure et Tenant Azure"
+  severity: "LOW"
+  description: "Identifie si un domaine utilise Microsoft 365 / Azure AD et détermine si l'architecture d'authentification est hybride (Federated) ou pure Cloud (Managed)."
+
+engine: azure
+action: "azure:TenantEnum"
+requests: []

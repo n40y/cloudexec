@@ -1,0 +1,8 @@
+id: azure-auth-check
+info:
+  name: "Vérification d'accès Azure/M365"
+  severity: "HIGH"
+  description: "Vérifie la validité d'un couple d'identifiants sur l'API d'authentification globale Microsoft."
+engine: azure
+action: "azure:AuthCheck"
+requests: []

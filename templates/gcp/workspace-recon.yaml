@@ -1,0 +1,8 @@
+id: gcp-workspace-recon
+info:
+  name: "Détection d'infrastructure Google Workspace"
+  severity: "LOW"
+  description: "Détermine si un domaine cible utilise la suite Google Cloud / Workspace pour sa gestion d'identité corporative."
+engine: gcp
+action: "gcp:WorkspaceCheck"
+requests: []

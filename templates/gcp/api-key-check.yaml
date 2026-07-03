@@ -1,0 +1,8 @@
+id: gcp-apikey-check
+info:
+  name: "Vérification de clé API GCP"
+  severity: "HIGH"
+  description: "Vérifie si une clé API Google Cloud (AIza...) extraite est valide et active auprès de l'infrastructure Google."
+engine: gcp
+action: "gcp:ApiKeyCheck"
+requests: []

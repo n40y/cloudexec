@@ -1,0 +1,9 @@
+id: aws-sts-whoami
+info:
+  name: "Validation des credentials AWS"
+  severity: "INFO"
+  description: "Exécute GetCallerIdentity pour identifier le compte."
+
+engine: aws
+action: "sts:GetCallerIdentity"
+requests: []

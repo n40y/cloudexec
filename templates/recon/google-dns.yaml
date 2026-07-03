@@ -1,0 +1,15 @@
+id: google-home-check
+info:
+  name: "Vérification de la page d'accueil Google"
+  severity: "INFO"
+  description: "Cherche le mot Google dans la source de la page."
+
+engine: http
+
+requests:
+  - method: GET
+    url: "https://www.google.com"
+    matchers:
+      - type: word
+        values:
+          - "Google"

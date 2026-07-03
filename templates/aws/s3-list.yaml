@@ -1,0 +1,9 @@
+id: aws-s3-enumeration
+info:
+  name: "Pillage et Énumération des Buckets S3"
+  severity: "MEDIUM"
+  description: "Tente de lister l'intégralité des buckets de stockage AWS du compte cible."
+
+engine: aws
+action: "s3:ListBuckets"
+requests: []

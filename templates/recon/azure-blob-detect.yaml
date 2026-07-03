@@ -1,0 +1,16 @@
+id: azure-blob-discovery
+info:
+  name: "Détection de Storage Account Azure public ou existant"
+  severity: "LOW"
+  description: "Vérifie si la cible possède un compte de stockage Blob chez Microsoft Azure."
+
+engine: http
+
+requests:
+  - method: GET
+    url: "https://{{target}}.blob.core.windows.net/?comp=list"
+    matchers:
+      - type: status
+        status: 200 # Conteneur totalement public (énumération possible)
+      - type: status
+        status: 403 # Le stockage existe mais l'accès anonyme direct est bloqué
