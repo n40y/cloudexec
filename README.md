@@ -25,6 +25,12 @@
 
 ---
 
+## 📺 Demo
+
+<p align="center">
+  <img width="892" height="331" alt="Cloudexec Preview" src="https://github.com/user-attachments/assets/f760e53c-a8cd-4ce3-973f-9a82efa13939" />
+</p>
+
 ## 🛠️ Customizing Templates (Playbooks)
 
 `cloudexec` uses a modular YAML template engine. You can easily extend the scanner's capabilities by adding your own templates into the provider subdirectories (e.g., `templates/gcp/`, `templates/aws/`).
