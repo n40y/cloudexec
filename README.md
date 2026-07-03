@@ -105,15 +105,16 @@ Triggers passive multi-cloud discovery templates, including historical DNS looku
 ```
 
 
-## Project Structure
+## 📁 Project Structure
 
-├── cmd/                # Cobra CLI commands definition
-├── pkg/
-│   ├── engines/        # Provider logic (AWS, Azure, GCP, Post-Auth)
-│   ├── templates/      # YAML parser and signature matchers
-│   └── utils/          # Thread-safe logging utilities
-├── templates/          # Ready-to-use multi-cloud YAML scanner templates
-└── main.go             # Application entry point
+| Path | Description |
+| :--- | :--- |
+| **`cmd/`** | Contains Cobra CLI command definitions (`aws`, `azure`, `gcp`, `recon`, `secrets`). |
+| **`pkg/engines/`** | Core execution logic for cloud provider validation and post-auth enumeration. |
+| **`pkg/templates/`** | YAML template parsing and signature matching engines. |
+| **`pkg/utils/`** | Thread-safe logging utilities and console formatting. |
+| **`templates/`** | Ready-to-use security playbooks and detection signatures (.yaml). |
+| **`main.go`** | Application entry point. |
 
 
 ## Configuration
