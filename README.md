@@ -156,4 +156,4 @@ aws:
 Distributed under the MIT License. See LICENSE for more information.
 
 ## 🔍 Keywords
-`cloud-native` `aws-audit` `iam-security` `security-automation` `golang` `infrastructure-as-code` `risk-assessment` `privilege-escalation`
+`cloud-automation` `security-orchestration` `devsecops` `cloud-native` `infrastructure-as-code` `iam-governance` `go` `security-automation` `cloud-ops` `api-security`
