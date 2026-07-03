@@ -4,14 +4,17 @@ import (
 	"fmt"
 	"os"
 
+	"cloudexec/pkg/engines"
 	"cloudexec/pkg/utils"
 
 	"github.com/spf13/cobra"
 )
 
 var (
-	Target  string
-	Verbose bool
+	Target       string
+	Verbose      bool
+	DirectIP     string
+	UserAgentRot bool
 )
 
 var rootCmd = &cobra.Command{
@@ -21,6 +24,8 @@ var rootCmd = &cobra.Command{
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		// S'exécute automatiquement au début de TOUTES les commandes
 		utils.Banner()
+		engines.GlobalDirectIP = DirectIP
+		engines.GlobalAntiWaf = UserAgentRot
 	},
 	Run: func(cmd *cobra.Command, args []string) {
 		cmd.Help()
@@ -38,4 +43,6 @@ func init() {
 	// Flags globaux partagés par toutes les sous-commandes
 	rootCmd.PersistentFlags().StringVarP(&Target, "target", "t", "", "Domaine ou PI cible")
 	rootCmd.PersistentFlags().BoolVarP(&Verbose, "verbose", "v", false, "Mode verbeux")
+	rootCmd.PersistentFlags().StringVar(&DirectIP, "ip", "", "Forcer une IP cible directe (Bypass Cloudflare/DNS Pinning)")
+	rootCmd.PersistentFlags().BoolVar(&UserAgentRot, "anti-waf", false, "Activer la rotation de User-Agent et le spoofing de headers")
 }
